@@ -5,19 +5,6 @@ const DetalleFactura = require('../Clases/DetalleFactura');
 
 describe('Factura', () => {
 
-    // Constructor de factura y agregar detalles
-    test('debería agregar detalles correctamente', () => {
-        const cliente = new Cliente(1, 'Juan Perez', 'Calle Falsa 123', '123456789', 'juan.perez@gmail.com');
-        const factura = new Factura(1, cliente, new Date());
-
-        const producto1 = new Producto(1, 'Laptop', 1500);
-        const detalle1 = new DetalleFactura(producto1, 1);
-
-        factura.agregarDetalle(detalle1);
-        expect(factura.detalles.length).toBe(1);  // Verifica que el detalle ha sido agregado
-        expect(factura.detalles[0]).toBe(detalle1);  // Verifica que el detalle agregado es correcto
-    });
-
     // Agregar detalle a la factura
     test('debería agregar un detalle a la factura', () => {
         const cliente = new Cliente(1, 'Juan Perez', 'Calle Falsa 123', '123456789', 'juan.perez@example.com');

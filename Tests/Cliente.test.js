@@ -18,6 +18,13 @@ describe('Cliente', () => {
         }).toThrow('El teléfono debe contener solo dígitos');
     });
 
+    // Validación para que el teléfono tenga una longitud mínima
+    test('debería lanzar un error si el teléfono tiene menos de 7 dígitos', () => {
+        expect(() => {
+            new Cliente(1, 'Juan Perez', 'Calle Falsa 123', '123456', 'juan.perez@gmail.com');
+        }).toThrow('El teléfono debe tener al menos 7 dígitos');
+    });
+
     // Validación para que el email tenga un formato correcto
     test('debería validar que el email tenga un formato correcto', () => {
         expect(() => {
@@ -42,6 +49,21 @@ describe('Cliente', () => {
     test('debería manejar nombres largos correctamente', () => {
         const cliente = new Cliente(2, 'Ana Maria Perez Gonzalez', 'Avenida Siempre Viva 742', '987654321', 'ana.perez@gmail.com');
         expect(cliente.nombre).toBe('Ana Maria Perez Gonzalez');
+    });
+
+    // Validación para que el nombre tenga una longitud máxima
+    test('debería lanzar un error si el nombre tiene más de 50 caracteres', () => {
+        const nombreLargo = 'Juan'.repeat(20);
+        expect(() => {
+            new Cliente(1, nombreLargo, 'Calle Falsa 123', '123456789', 'juan.perez@gmail.com');
+        }).toThrow('El nombre no puede tener más de 50 caracteres');
+    });
+
+    // Validación de actualizarDireccion
+    test('debería actualizar la dirección correctamente', () => {
+        const cliente = new Cliente(1, 'Juan Perez', 'Calle Falsa 123', '123456789', 'juan.perez@gmail.com');
+        cliente.actualizarDireccion('Avenida Siempre Viva 742');
+        expect(cliente.direccion).toBe('Avenida Siempre Viva 742');
     });
 });
 
