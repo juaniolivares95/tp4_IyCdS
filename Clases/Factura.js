@@ -7,6 +7,9 @@ class Factura {
     }
 
     agregarDetalle(detalle) {
+        if (this.detalles.includes(detalle)) {
+            throw new Error('El detalle ya ha sido agregado a la factura');
+        }
         this.detalles.push(detalle);
     }
 
@@ -16,3 +19,4 @@ class Factura {
 }
 
 module.exports = Factura;
+

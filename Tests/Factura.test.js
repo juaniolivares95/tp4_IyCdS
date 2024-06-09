@@ -32,4 +32,21 @@ describe('Factura', () => {
 
         expect(factura.calcularTotal()).toBe(1540);  // Verifica que el total es correcto
     });
+
+     // Validar que no se puedan agregar detalles duplicados
+     test('debería lanzar un error si se intenta agregar un detalle duplicado', () => {
+        const cliente = new Cliente(1, 'Juan Perez', 'Calle Falsa 123', '123456789', 'juan.perez@gmail.com', 30, '2023-01-01', 'Masculino');
+        const factura = new Factura(1, cliente, new Date());
+        const producto = new Producto(1, 'Laptop', 1500);
+        const detalle = new DetalleFactura(producto, 1);
+        factura.agregarDetalle(detalle);
+        expect(() => factura.agregarDetalle(detalle)).toThrow('El detalle ya ha sido agregado a la factura');
+    });
+
+    // Validar que el total sea cero si no hay detalles
+    test('debería calcular un total de 0 si no hay detalles', () => {
+        const cliente = new Cliente(1, 'Juan Perez', 'Calle Falsa 123', '123456789', 'juan.perez@gmail.com', 30, '2023-01-01', 'Masculino');
+        const factura = new Factura(1, cliente, new Date());
+        expect(factura.calcularTotal()).toBe(0);
+    });
 });

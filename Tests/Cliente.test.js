@@ -65,5 +65,10 @@ describe('Cliente', () => {
         cliente.actualizarDireccion('Avenida Siempre Viva 742');
         expect(cliente.direccion).toBe('Avenida Siempre Viva 742');
     });
+    test('debería validar que el nombre no contenga caracteres especiales', () => {
+        expect(() => {
+            new Cliente(4, 'Pedro@Gomez', 'Calle Falsa 123', '123456789', 'pedro.gomez@gmail.com', 25, '2023-01-01', 'Masculino');
+        }).toThrow('El nombre contiene caracteres no válidos');
+    });
 });
 

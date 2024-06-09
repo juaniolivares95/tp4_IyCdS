@@ -12,6 +12,9 @@ class Cliente {
         if (telefono.length < 7) {
             throw new Error('El teléfono debe tener al menos 7 dígitos');
         }
+        if (!/^[a-zA-Z\s]+$/.test(nombre)) {
+            throw new Error('El nombre contiene caracteres no válidos');
+        }
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
