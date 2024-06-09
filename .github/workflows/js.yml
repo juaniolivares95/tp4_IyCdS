@@ -4,9 +4,9 @@ name: CI
 on:
   # Activa el flujo de trabajo en eventos de push o pull request, para todas las ramas
   push:
-    branches: [ "*" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "*" ]
+    branches: [ "main" ]
   # Permite ejecutar este flujo de trabajo manualmente desde la pestaña de Actions
   workflow_dispatch:
 # Una ejecución de flujo de trabajo está compuesta por uno o más trabajos que pueden ejecutarse secuencialmente o en paralelo
