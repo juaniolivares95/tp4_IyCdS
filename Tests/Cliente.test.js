@@ -67,7 +67,7 @@ describe('Cliente', () => {
     });
     test('debería validar que el nombre no contenga caracteres especiales', () => {
         expect(() => {
-            new Cliente(4, 'Pedro@Gomez', 'Calle Falsa 123', '123456789', 'pedro.gomez@gmail.com', 25, '2023-01-01', 'Masculino');
+            new Cliente(4, 'Pedro@Gomez', 'Calle Falsa 123', '123456789', 'pedro.gomez@gmail.com');
         }).toThrow('El nombre contiene caracteres no válidos');
     });
 });
